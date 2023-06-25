@@ -28,7 +28,6 @@ public:
     template<typename T1>
     QChain* append(const T1& unit) { p->append(unit);return this; };
 
-
     //Widget
     template<typename T1>
     QChain* setLayout(T1* layout) { p->setLayout(layout);return this; };
@@ -55,9 +54,14 @@ public:
     QChain* setContentMargins(int left, int top, int right, int bottom) { p->setContentMargins(left, top, right, bottom);return this; };
 
     //network
-    QChain* setUrl(const QUrl& url) { p->setUrl(url);return this; };
-    QChain* setRawHeader(const QByteArray& headerName, const QByteArray& headerValue) { p->setRawHeader(headerName, headerValue);return this; };
-    QChain* setHeader(QNetworkRequest::KnownHeaders header, const QVariant& value) { p->setHeader(header, value);return this; };
-    QChain* setBoundary(const QByteArray& boundary) { p->setBoundary(boundary);return this; };
-    QChain* setBody(const QByteArray& body) { p->setBody(body);return this; };
+    template<typename T1>
+    QChain* setUrl(const T1& url) { p->setUrl(url);return this; };
+    template<typename T1>
+    QChain* setBoundary(const T1& boundary) { p->setBoundary(boundary);return this; };
+    template<typename T1>
+    QChain* setBody(const T1& body) { p->setBody(body);return this; };
+    template<typename T1, typename T2>
+    QChain* setRawHeader(const T1& headerName, const T2& headerValue) { p->setRawHeader(headerName, headerValue);return this; };
+    template<typename T1, typename T2>
+    QChain* setHeader(T1 header, const T2& value) { p->setHeader(header, value);return this; };
 };
